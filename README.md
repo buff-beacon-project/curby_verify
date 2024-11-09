@@ -16,8 +16,7 @@ To perform a verification of a given CURBy-Q round, you will first need [docker 
 First clone this repository:
 
 ```sh
-git clone https://github.com/buff-beacon-project/trevisan_python_interface
-cd trevisan_python_interface
+git clone https://github.com/buff-beacon-project/curby_verify.git
 ```
 
 Then build, using docker compose:
