@@ -1,0 +1,35 @@
+version: "3.3"
+services:
+  trevisan:
+    hostname: "trevisan"
+    build: https://github.com/buff-beacon-project/trevisan_python_interface.git
+    ports:
+      - "5553:5553"
+    volumes:
+      - ./python:/app/python
+    stdin_open: true
+    tty: true
+    shm_size: 2048m
+    command: ["python3", "/app/python/extractor_server.py"]
+    restart: unless-stopped
+
+  verify:
+    build:
+      context: verifier
+      dockerfile: Dockerfile
+    image: "curby-verifier"
+    ports:
+      - "3000:3000"
+    command: ["100"]
+    restart: no
+    # volumes:
+    #   - ./verifier/index.ts:/usr/src/app/index.ts
+    depends_on:
+      - trevisan
+    profiles:
+      - "verify"
+    # command: [ "node", "--experimental-strip-types", "index.ts" ]
+
+networks:
+  default:
+    name: trevisan-network
