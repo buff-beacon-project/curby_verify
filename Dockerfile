@@ -17,7 +17,7 @@ COPY package.json /temp/prod/
 RUN --mount=type=cache,target=/temp/prod/.npm \
   cd /temp/prod && \
   npm set cache /temp/prod/.npm && \
-  npm install --frozen-lockfile --omit=dev
+  VCPKG_FORCE_SYSTEM_BINARIES=1 npm install --frozen-lockfile --omit=dev
 
 # copy node_modules from temp directory
 # then copy all (non-ignored) project files into the image

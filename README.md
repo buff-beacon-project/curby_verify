@@ -19,6 +19,11 @@ First clone this repository:
 git clone https://github.com/buff-beacon-project/curby_verify.git
 ```
 
+Next clone the code to check the entropoy and extract the randomness:
+```sh
+git clone https://github.com/buff-beacon-project/trevisan_python_interface.git
+```
+
 Then build, using docker compose:
 
 ```sh
