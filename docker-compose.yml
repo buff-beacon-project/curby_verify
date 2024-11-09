@@ -3,12 +3,13 @@ services:
   trevisan:
     hostname: "trevisan"
     # build: https://github.com/buff-beacon-project/trevisan_python_interface.git
-    context: trevisan_python_interface
-    build: Dockerfile
+    build: 
+      context: trevisan_python_interface
+      dockerfile: Dockerfile
     ports:
       - "5553:5553"
     volumes:
-      - ./python:/app/python
+      - ./trevisan_python_interface/python:/app/python
     stdin_open: true
     tty: true
     shm_size: 2048m
