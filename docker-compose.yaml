@@ -1,0 +1,14 @@
+version: "3.3"
+services:
+  trevisan:
+    hostname: "trevisan"
+    build: https://github.com/buff-beacon-project/trevisan_python_interface.git
+    shm_size: 2048m
+    command: ["python3", "/app/extractor_server.py"]
+  verify:
+    build: https://github.com/buff-beacon-project/curby_verify.git
+    # build:
+    #   dockerfile: Dockerfile
+    depends_on:
+      - trevisan
+    command: ["100"]
